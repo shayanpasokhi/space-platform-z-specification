@@ -1,0 +1,50 @@
+─ section space_platform parents standard_toolkit
+└
+
+─ [ Platform_Instruments, Communications_Channels ] └
+
+╷
+  Max_Channels, Max_Instruments : ℕ
+└
+
+┌ IO_Channel_Assignments
+  active_instruments : ℙ Platform_Instruments
+  assigned_to : Communications_Channels ↔ Platform_Instruments
+  available, busy : ℙ Communications_Channels
+|
+  ran assigned_to ⊆ active_instruments
+  available ∩ busy = ∅
+└
+
+┌ Make_An_Assignment
+  ΔIO_Channel_Assignments
+  instrument? : Platform_Instruments
+  channel? : Communications_Channels
+|
+  instrument? ∈ active_instruments
+  channel? ∈ available
+  
+  #(assigned_to ▷ {instrument?}) < Max_Channels
+  channel? ↦ instrument? ∉ assigned_to
+  
+  active_instruments′ = active_instruments
+  assigned_to′ = assigned_to ∪ {channel? ↦ instrument?}
+  
+  (#({channel?} ◁ assigned_to) < Max_Instruments − 1) ∨
+  (#({channel?} ◁ assigned_to) = Max_Instruments − 1 ∧
+  available′ = available ∖ {channel?} ∧
+  busy′ = busy ∪ {channel?})
+└
+
+─
+  Possible_Message ::= instrument_not_active
+└
+
+┌ Instrument_Not_Active
+  ΞIO_Channel_Assignments
+  instrument? : Platform_Instruments
+  message! : Possible_Message
+|
+  instrument? ∉ active_instruments
+  message! = instrument_not_active
+└
