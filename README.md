@@ -14,3 +14,5 @@ instruments shared per I/O-channel.
 The objective is to construct a specification, that will
 manage the assignment of communication I/O-channels to
 spacecraft platform instruments.
+
+![image](https://user-images.githubusercontent.com/81962498/206135626-02719bc2-997c-4e24-906a-a7707af49019.png)
