@@ -1,6 +1,9 @@
 # space-platform-z-specification
 z specification for a space platform
 
+doc:
+[space-platform-z-specification.pdf](https://github.com/shayanpasokhi/space-platform-z-specification/files/10174455/space-platform-z-specification.pdf)
+
 A space platform contains a number of instruments. Several
 communications channels are provided allowing both input and
 output instrument communications. Platform instruments may be
